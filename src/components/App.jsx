@@ -69,7 +69,7 @@ export class App extends Component {
   }
 
   state = {
-  contacts: [  ],
+  contacts: [],
   filter:[]
   }
 
