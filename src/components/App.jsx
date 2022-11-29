@@ -28,7 +28,7 @@ export class App extends Component {
   }
 
   componentDidUpdate() {
-  // Typowy sposób użycia (nie zapomnij porównać właściwości):
+  
   if (this.state !== localStorage.getItem('phonebook')) {
     localStorage.setItem('phonebook', JSON.stringify(this.state.contacts))
   }
