@@ -82,7 +82,7 @@ export class App extends Component {
         <Form onSubmit={value => this.searchForExistingContacts(value)}></Form>
         <h2>Contacts</h2>
         <Filter onChange={search => this.searchForContacts(search)}></Filter>
-        {this.state.contacts[0] !== 0 ? (
+        {this.state.contacts[0] !== null ? (
           <ContactList
             contacts={
               this.state.filter[0] == null
