@@ -67,7 +67,7 @@ export class App extends Component {
       contact => contact.name === deleteContact
     );
     contactsArray.splice(searchedContact, 1);
-    return this.setState({ contacts: contactsArray });
+    return this.setState({ contacts: contactsArray }), window.location.reload();
   }
 
   state = {
