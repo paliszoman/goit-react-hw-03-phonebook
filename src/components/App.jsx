@@ -23,6 +23,17 @@ export class App extends Component {
         contacts: JSON.parse(localStorage.getItem('phonebook')),
       });
     }
+    if (localStorage.getItem('phonebook') === null) {
+      localStorage.setItem(
+        'contacts',
+        JSON.stringify([
+          { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+          { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+          { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+          { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+        ])
+      );
+    }
   }
 
   componentDidUpdate() {
@@ -61,19 +72,18 @@ export class App extends Component {
   //function that delete object with name from state
 
   deleteContacts(deleteContact) {
-    let filtered = this.state.contacts.filter(
-      item => item.name !== deleteContact
+    const contacts = this.state.contacts;
+    let contactsArray = [...contacts];
+    let searchedContact = contacts.findIndex(
+      contact => contact.name === deleteContact
     );
-    return this.setState({ contacts: filtered });
+    contactsArray.splice(searchedContact, 1);
+    this.setState({ contacts: contactsArray });
+    window.location.reload();
   }
 
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: [],
   };
 
